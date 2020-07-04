@@ -22,6 +22,7 @@
         <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
+        <validation-api.version>2.0.1.Final</validation-api.version>
         <lombok.version>1.18.10</lombok.version>
     </properties>
 
