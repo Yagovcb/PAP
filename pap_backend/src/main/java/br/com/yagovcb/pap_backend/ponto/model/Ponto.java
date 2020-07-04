@@ -2,6 +2,7 @@ package br.com.yagovcb.pap_backend.ponto.model;
 
 import br.com.yagovcb.pap_backend.pap.model.Funcionario;
 import br.com.yagovcb.pap_backend.pap.model.Loja;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -61,30 +62,39 @@ public class Ponto implements Serializable {
     private boolean abonado;
 
     @Column(name = "data_ponto", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date dataPonto;
 
     @Column(name = "saldo_dia_faixa1", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date saldoDiaFaixa1;
 
     @Column(name = "saldo_dia_faixa2", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date saldoDiaFaixa2;
 
     @Column(name = "total_horas_trabalhadas")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date totalHorasTrabalhadas;
 
     @Column(name = "hora_atraso")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date horaAtraso;
 
     @Column(name = "horas_diurnas")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date horasDiurnas;
 
     @Column(name = "horas_noturnas")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date horasNoturnas;
 
     @Column(name = "hora_extra1")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date horaExtra1;
 
     @Column(name = "hora_extra2")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm")
     private Date horaExtra2;
 
     @ManyToOne(fetch=FetchType.LAZY)

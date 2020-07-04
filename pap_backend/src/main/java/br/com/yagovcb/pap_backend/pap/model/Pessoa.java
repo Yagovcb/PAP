@@ -10,7 +10,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +21,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author yagovcb
@@ -33,15 +33,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "departamento", schema = "pap")
+@Table(name = "pessoa", schema = "pap")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Departamento implements Serializable {
-    private static final String SEQ_TB_DEPARTAMENTO = "SEQ_TB_DEPARTAMENTO";
+public class Pessoa implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final String SEQ_TB_PESSOA = "SEQ_TB_PESSOA";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_DEPARTAMENTO)
-    @SequenceGenerator(name = SEQ_TB_DEPARTAMENTO, sequenceName = SEQ_TB_DEPARTAMENTO, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_PESSOA)
+    @SequenceGenerator(name = SEQ_TB_PESSOA, sequenceName = SEQ_TB_PESSOA, allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -51,17 +51,12 @@ public class Departamento implements Serializable {
     @Fetch(FetchMode.JOIN)
     private Loja loja;
 
-    @Column(name = "codigo_legado", nullable = false)
-    private int codigoLegado;
-
-    @Column(name = "tipo", nullable = false)
-    private int tipo;
-
-    @Column(name = "descricao", nullable = false)
-    private String descricao;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_grupo_departamento")
-    @Fetch(FetchMode.JOIN)
-    private GrupoDepartamento grupoDepartamento;
+    private char sexo;
+    private double valorAluguel;
+   // private Localidade naturalidade;
+    private Date dataNascimento;
+    //private String cpf;
+    private short numeroDependentes;
+    //private String rg;
+    private Uf ufEmissor;
 }

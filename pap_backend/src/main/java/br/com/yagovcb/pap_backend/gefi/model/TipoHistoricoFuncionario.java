@@ -1,7 +1,9 @@
-package br.com.yagovcb.pap_backend.pap.model;
+package br.com.yagovcb.pap_backend.gefi.model;
 
+import br.com.yagovcb.pap_backend.pap.model.Lov;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 
 /**
@@ -11,5 +13,5 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class FuncaoInterna extends Lov {
+public class TipoHistoricoFuncionario extends Lov {
 }

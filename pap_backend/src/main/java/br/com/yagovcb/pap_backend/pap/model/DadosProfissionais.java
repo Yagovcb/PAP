@@ -1,5 +1,6 @@
 package br.com.yagovcb.pap_backend.pap.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -23,8 +24,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author yagovcb
@@ -36,9 +35,9 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "pessoa_fisica", schema = "pap")
+@Table(name = "profissao", schema = "pap")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class PessoaFisica extends Pessoa {
+public class DadosProfissionais {
 
     private static final long serialVersionUID = 1L;
     private static final String SEQ_TB_PESSOA_FISICA = "SEQ_TB_PESSOA_FISICA";
@@ -55,52 +54,49 @@ public class PessoaFisica extends Pessoa {
     @Fetch(FetchMode.JOIN)
     private Loja loja;
 
-    @Column(name = "renda_mensal", nullable = false)
-    private Double rendaMensal;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_estado_civil")
+    @ManyToOne(fetch=FetchType.LAZY, targetEntity=PessoaFisica.class)
     @Fetch(FetchMode.JOIN)
-    private EstadoCivil estadoCivil;
+    @JoinColumns({
+            @JoinColumn(name="id_pessoa_fisica"),
+            @JoinColumn(name="id_loja_pessoa_fisica")
+    })
+    private PessoaFisica owner;
 
-    @Column(name = "apelido", nullable = false)
-    private String apelido;
+    private String localTrabalho;
+
+    private Date dataAdmissao;
+
+    private Date dataDemissao;
+
+    private String profissaoLegado;
+
+    private String atividadeProfissionalLegado;
 
     @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinColumn(name = "id_profissao")
     @Fetch(FetchMode.JOIN)
     private Profissao profissao;
 
-    @ManyToOne(fetch=FetchType.LAZY)
-    @Fetch(FetchMode.JOIN)
-    @JoinColumns({
-            @JoinColumn(name="id_conjuge"),
-            @JoinColumn(name="id_loja_conjuge")
-    })
-    private PessoaFisica conjuge;
-
-    @Column(name = "falecido", nullable = false)
-    private Boolean falecido;
-
     @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_escolaridade")
+    @JoinColumn(name = "id_atividade_profissional")
     @Fetch(FetchMode.JOIN)
-    private Escolaridade escolaridade;
+    private AtividadeProfissional atividadeProfissional;
 
-    @ManyToOne(fetch=FetchType.LAZY)
+    @Column(name = "renda_mensal", nullable = false)
+    private double rendaMensal;
+
+    @Column(name = "ativo", nullable = false)
+    private boolean ativo;
+
+    @Column(name = "data_inclusao", nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date dataInclusao;
+
+    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.ALL)
     @Fetch(FetchMode.JOIN)
     @JoinColumns({
-            @JoinColumn(name="id_filiacao_pai"),
-            @JoinColumn(name="id_loja_filiacao_pai")
+            @JoinColumn(name="id_endereco"),
+            @JoinColumn(name="id_loja_endereco")
     })
-    private PessoaFisica filiacaoPai;
-
-    @ManyToOne(fetch=FetchType.LAZY)
-    @Fetch(FetchMode.JOIN)
-    @JoinColumns({
-            @JoinColumn(name="id_filiacao_mae"),
-            @JoinColumn(name="id_loja_filiacao_mae")
-    })
-    private PessoaFisica filiacaoMae;
-
+    private EnderecoPessoa endereco;
 }

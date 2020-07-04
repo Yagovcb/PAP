@@ -10,7 +10,6 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,15 +32,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "departamento", schema = "pap")
+@Table(name = "equipe", schema = "pap")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Departamento implements Serializable {
-    private static final String SEQ_TB_DEPARTAMENTO = "SEQ_TB_DEPARTAMENTO";
+public class Email implements Serializable {
+    private static final String SEQ_TB_EMAIL = "SEQ_TB_EMAIL";
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_DEPARTAMENTO)
-    @SequenceGenerator(name = SEQ_TB_DEPARTAMENTO, sequenceName = SEQ_TB_DEPARTAMENTO, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_EMAIL)
+    @SequenceGenerator(name = SEQ_TB_EMAIL, sequenceName = SEQ_TB_EMAIL, allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -51,17 +50,24 @@ public class Departamento implements Serializable {
     @Fetch(FetchMode.JOIN)
     private Loja loja;
 
-    @Column(name = "codigo_legado", nullable = false)
-    private int codigoLegado;
+    @Column(name = "nome", nullable = false)
+    private String nome;
 
-    @Column(name = "tipo", nullable = false)
-    private int tipo;
+    @Column(name = "email", nullable = false)
+    private String email;
 
-    @Column(name = "descricao", nullable = false)
-    private String descricao;
+    @Column(name = "interno")
+    private boolean interno;
 
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_grupo_departamento")
-    @Fetch(FetchMode.JOIN)
-    private GrupoDepartamento grupoDepartamento;
+    @Column(name = "usuario")
+    private String usuario;
+
+    @Column(name = "senha")
+    private String senha;
+
+    @Column(name = "provedor")
+    private String provedor;
+
+    @Column(name = "atual", nullable = false)
+    private boolean atual;
 }
