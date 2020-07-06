@@ -103,4 +103,6 @@ public class PessoaFisica extends Pessoa {
     })
     private PessoaFisica filiacaoMae;
 
+    @Column(name = "numero_dependentes", nullable = false)
+    private short numeroDependentes;
 }

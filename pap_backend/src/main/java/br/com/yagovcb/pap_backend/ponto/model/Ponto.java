@@ -1,6 +1,6 @@
 package br.com.yagovcb.pap_backend.ponto.model;
 
-import br.com.yagovcb.pap_backend.pap.model.Funcionario;
+import br.com.yagovcb.pap_backend.gefi.model.Funcionario;
 import br.com.yagovcb.pap_backend.pap.model.Loja;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 

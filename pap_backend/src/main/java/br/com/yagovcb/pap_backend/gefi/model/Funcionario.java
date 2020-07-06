@@ -1,7 +1,11 @@
-package br.com.yagovcb.pap_backend.pap.model;
+package br.com.yagovcb.pap_backend.gefi.model;
 
 
-import br.com.yagovcb.pap_backend.gefi.model.HistoricoFuncionario;
+import br.com.yagovcb.pap_backend.pap.model.Departamento;
+import br.com.yagovcb.pap_backend.pap.model.Loja;
+import br.com.yagovcb.pap_backend.pap.model.PessoaFisica;
+import br.com.yagovcb.pap_backend.pap.model.Setor;
+import br.com.yagovcb.pap_backend.pap.model.Sindicato;
 import br.com.yagovcb.pap_backend.ponto.model.HorarioSemana;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

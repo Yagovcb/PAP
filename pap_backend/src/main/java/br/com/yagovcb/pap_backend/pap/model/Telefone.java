@@ -18,7 +18,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -34,16 +33,15 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "endereco_pessoa", schema = "pap")
+@Table(name = "telefone", schema = "pap")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class EnderecoPessoa implements Serializable {
-
-    private static final String SEQ_TB_ENDERECO_PESSOA = "SEQ_TB_ENDERECO_PESSOA";
+public class Telefone implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static final String SEQ_TB_TELEFONE = "SEQ_TB_TELEFONE";
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_ENDERECO_PESSOA)
-    @SequenceGenerator(name = SEQ_TB_ENDERECO_PESSOA, sequenceName = SEQ_TB_ENDERECO_PESSOA, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_TELEFONE)
+    @SequenceGenerator(name = SEQ_TB_TELEFONE, sequenceName = SEQ_TB_TELEFONE, allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
@@ -53,42 +51,19 @@ public class EnderecoPessoa implements Serializable {
     @Fetch(FetchMode.JOIN)
     private Loja loja;
 
-    @Lob
-    @Column(name = "logradouro", nullable = false)
-    private String logradouro;
-
     @Column(name = "numero", nullable = false)
     private String numero;
 
-    @Lob
-    @Column(name = "complemento")
-    private String complemento;
+    @Column(name = "ramal")
+    private String ramal;
 
-    @Lob
-    @Column(name = "perimetro", nullable = false)
-    private String perimetro;
-
-    @Lob
-    @Column(name = "numero_dependentes", nullable = false)
-    private String pontoReferencia;
+    @Column(name = "ddd", nullable = false, length = 2)
+    private String ddd;
 
     @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_tipo_endereco")
+    @JoinColumn(name = "id_tipo_telefone")
     @Fetch(FetchMode.JOIN)
-    private TipoEndereco tipoEndereco;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_bairro")
-    @Fetch(FetchMode.JOIN)
-    private Bairro bairro;
-
-    @Column(name = "cep", nullable = false)
-    private String cep;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_localidade")
-    @Fetch(FetchMode.JOIN)
-    private Localidade localidade;
+    private TipoTelefone tipoTelefone;
 
     @Column(name = "atual", nullable = false)
     private boolean atual;
