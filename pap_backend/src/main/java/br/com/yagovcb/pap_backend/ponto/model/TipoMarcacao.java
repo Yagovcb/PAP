@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 
-
 /**
  * @author yagovcb
  * @since 04/07/2020
@@ -14,5 +13,5 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class SituacaoPonto extends Lov {
+public class TipoMarcacao extends Lov {
 }

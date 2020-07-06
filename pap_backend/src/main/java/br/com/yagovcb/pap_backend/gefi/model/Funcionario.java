@@ -2,7 +2,6 @@ package br.com.yagovcb.pap_backend.gefi.model;
 
 
 import br.com.yagovcb.pap_backend.pap.model.Departamento;
-import br.com.yagovcb.pap_backend.pap.model.Loja;
 import br.com.yagovcb.pap_backend.pap.model.PessoaFisica;
 import br.com.yagovcb.pap_backend.pap.model.Setor;
 import br.com.yagovcb.pap_backend.pap.model.Sindicato;

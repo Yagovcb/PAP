@@ -1,6 +1,7 @@
-package br.com.yagovcb.pap_backend.pap.model;
+package br.com.yagovcb.pap_backend.gefi.model;
 
 import javax.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

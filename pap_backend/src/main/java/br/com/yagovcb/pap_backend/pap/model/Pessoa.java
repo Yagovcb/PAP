@@ -1,5 +1,6 @@
 package br.com.yagovcb.pap_backend.pap.model;
 
+import br.com.yagovcb.pap_backend.gefi.model.Loja;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -10,7 +11,6 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -56,10 +56,10 @@ public class Pessoa implements Serializable {
     @Fetch(FetchMode.JOIN)
     private Loja loja;
 
-    @Column(name = "numero_dependentes", nullable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(name = "numero_dependentes", nullable = false)
+    @Column(name = "sexo", nullable = false, length = 1)
     private char sexo;
 
     @Column(name = "data_nascimento", nullable = false)

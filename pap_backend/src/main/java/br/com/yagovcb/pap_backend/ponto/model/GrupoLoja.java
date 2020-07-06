@@ -1,4 +1,4 @@
-package br.com.yagovcb.pap_backend.pap.model;
+package br.com.yagovcb.pap_backend.ponto.model;
 
 import br.com.yagovcb.pap_backend.gefi.model.Loja;
 import lombok.AllArgsConstructor;
@@ -19,10 +19,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author yagovcb
@@ -34,35 +37,25 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode
-@Table(name = "departamento", schema = "pap")
+@Table(name = "grupo_loja", schema = "pap")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class Departamento implements Serializable {
-    private static final String SEQ_TB_DEPARTAMENTO = "SEQ_TB_DEPARTAMENTO";
+public class GrupoLoja implements Serializable {
+    private static final String SEQ_TB_GRUPO_LOJA = "SEQ_TB_GRUPO_LOJA";
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_DEPARTAMENTO)
-    @SequenceGenerator(name = SEQ_TB_DEPARTAMENTO, sequenceName = SEQ_TB_DEPARTAMENTO, allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = SEQ_TB_GRUPO_LOJA)
+    @SequenceGenerator(name = SEQ_TB_GRUPO_LOJA, sequenceName = SEQ_TB_GRUPO_LOJA, allocationSize = 1)
     @Column(name = "id")
     private Long id;
 
-    @Id
-    @ManyToOne(fetch= FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @Fetch(FetchMode.SUBSELECT)
     @JoinColumn(name = "id_loja")
+    private List<Loja> lojas;
+
+    @ManyToOne(fetch= FetchType.LAZY)
+    @JoinColumn(name = "id_tipo_grupo_loja")
     @Fetch(FetchMode.JOIN)
-    private Loja loja;
-
-    @Column(name = "codigo_legado", nullable = false)
-    private int codigoLegado;
-
-    @Column(name = "tipo", nullable = false)
-    private int tipo;
-
-    @Column(name = "descricao", nullable = false)
-    private String descricao;
-
-    @ManyToOne(fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-    @JoinColumn(name = "id_grupo_departamento")
-    @Fetch(FetchMode.JOIN)
-    private GrupoDepartamento grupoDepartamento;
+    private TipoGrupoLoja tipoGrupoLoja;
 }

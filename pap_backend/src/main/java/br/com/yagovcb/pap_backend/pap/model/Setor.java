@@ -1,6 +1,7 @@
 package br.com.yagovcb.pap_backend.pap.model;
 
 import br.com.yagovcb.pap_backend.gefi.model.Funcionario;
+import br.com.yagovcb.pap_backend.gefi.model.Loja;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

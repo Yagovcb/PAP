@@ -1,7 +1,7 @@
 package br.com.yagovcb.pap_backend.ponto.model;
 
 import br.com.yagovcb.pap_backend.gefi.model.Funcionario;
-import br.com.yagovcb.pap_backend.pap.model.Loja;
+import br.com.yagovcb.pap_backend.gefi.model.Loja;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

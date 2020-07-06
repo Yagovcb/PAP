@@ -1,5 +1,6 @@
-package br.com.yagovcb.pap_backend.pap.model;
+package br.com.yagovcb.pap_backend.ponto.model;
 
+import br.com.yagovcb.pap_backend.pap.model.Lov;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,5 @@ import javax.persistence.Entity;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-public class TipoLoja extends Lov {
-
+public class TipoRegistroPonto extends Lov {
 }

@@ -1,5 +1,6 @@
 package br.com.yagovcb.pap_backend.pap.model;
 
+import br.com.yagovcb.pap_backend.gefi.model.Loja;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,9 +23,6 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author yagovcb
